@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ff4d8d">
+    <title>Приглашение для Амиры 💕</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Marck+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Прелоадер -->
+<div class="preloader" id="preloader">
+    <div class="loader-heart">💖</div>
+    <p>Загружаю кое-что важное...</p>
+</div>
+
+<!-- Кнопка музыки -->
+<button class="music-btn" id="musicBtn" aria-label="Музыка">
+    <span class="music-icon">🎵</span>
+</button>
+
+<!-- Плавающие сердечки на фоне -->
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<!-- ЭКРАН 1: Приглашение -->
+<section class="screen active" id="screen1">
+    <div class="content">
+        <div class="emoji-big">🎬</div>
+        <h1 class="animate-in">Амира, привет!</h1>
+        <p class="subtitle animate-in">У меня к тебе очень важный вопрос...</p>
+        <h2 class="question animate-in">Пойдёшь со мной на свидание в кино?</h2>
+        <div class="buttons" id="buttonsWrap">
+            <button class="btn-yes" id="btnYes">Да 💖</button>
+            <button class="btn-no" id="btnNo">Нет</button>
+        </div>
+    </div>
+</section>
+
+<!-- ЭКРАН 2: Дата и время -->
+<section class="screen" id="screen2">
+    <div class="content">
+        <div class="emoji-big">🎉</div>
+        <h1>Урааа! Я так счастлив!</h1>
+        <p class="subtitle">Тогда лови детали нашего свидания:</p>
+
+        <div class="info-card">
+            <div class="info-icon">📅</div>
+            <div class="info-text">
+                <span class="label">Дата</span>
+                <span class="value" id="dateValue">Загрузка...</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+                <span class="label">Место</span>
+                <span class="value">Кинотеатр «Синема Парк»</span>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-icon">🍿</div>
+            <div class="info-text">
+                <span class="label">Программа</span>
+                <span class="value">Фильм + попкорн + море эмоций</span>
+            </div>
+        </div>
+
+        <!-- Обратный отсчёт -->
+        <div class="countdown" id="countdown">
+            <h3 class="countdown-title">⏳ До встречи осталось:</h3>
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span class="count-num" id="days">00</span>
+                    <span class="count-label">дней</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-num" id="hours">00</span>
+                    <span class="count-label">часов</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-num" id="minutes">00</span>
+                    <span class="count-label">минут</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="count-num" id="seconds">00</span>
+                    <span class="count-label">секунд</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-next" id="btnNext">Дальше 💌</button>
+    </div>
+</section>
+
+<!-- ЭКРАН 3: Галерея -->
+<section class="screen" id="screen3">
+    <div class="content content-wide">
+        <div class="emoji-big">📸</div>
+        <h1>Наши моменты</h1>
+        <p class="subtitle">Немного тёплых воспоминаний...</p>
+
+        <div class="gallery">
+            <div class="gallery-item" data-index="0">
+                <img src="photo1.jpg" alt="Момент 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><rect fill=%22%23ffb6c1%22 width=%22300%22 height=%22300%22/><text x=%22150%22 y=%22160%22 font-size=%2280%22 text-anchor=%22middle%22>💖</text></svg>'">
+                <div class="gallery-caption">Наш первый разговор</div>
+            </div>
+            <div class="gallery-item" data-index="1">
+                <img src="photo2.jpg" alt="Момент 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><rect fill=%22%23ffc0cb%22 width=%22300%22 height=%22300%22/><text x=%22150%22 y=%22160%22 font-size=%2280%22 text-anchor=%22middle%22>🌹</text></svg>'">
+                <div class="gallery-caption">Твоя улыбка</div>
+            </div>
+            <div class="gallery-item" data-index="2">
+                <img src="photo3.jpg" alt="Момент 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><rect fill=%22%23ffe4e1%22 width=%22300%22 height=%22300%22/><text x=%22150%22 y=%22160%22 font-size=%2280%22 text-anchor=%22middle%22>✨</text></svg>'">
+                <div class="gallery-caption">Твои глаза</div>
+            </div>
+            <div class="gallery-item" data-index="3">
+                <img src="photo4.jpg" alt="Момент 4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><rect fill=%22%23ffd1dc%22 width=%22300%22 height=%22300%22/><text x=%22150%22 y=%22160%22 font-size=%2280%22 text-anchor=%22middle%22>💫</text></svg>'">
+                <div class="gallery-caption">И ещё впереди...</div>
+            </div>
+        </div>
+
+        <button class="btn-next" id="btnNext2">Дальше 💌</button>
+    </div>
+</section>
+
+<!-- ЭКРАН 4: Признание с печатающимся текстом -->
+<section class="screen" id="screen4">
+    <div class="content">
+        <div class="emoji-big">💌</div>
+        <h1>Амира...</h1>
+        <div class="typing-wrap">
+            <p class="typing-text" id="typingText"></p>
+            <span class="cursor" id="cursor">|</span>
+        </div>
+        <div class="final-hearts">💕 💖 💕</div>
+        <button class="btn-final" id="btnFinal" style="display:none;">Я буду ждать! 💘</button>
+    </div>
+</section>
+
+<!-- ЭКРАН 5: Финал -->
+<section class="screen" id="screen5">
+    <div class="content">
+        <div class="emoji-big pulse">❤️</div>
+        <h1>Спасибо, Амира!</h1>
+        <p class="subtitle">Ты сделала меня самым счастливым человеком на свете!</p>
+        <p class="subtitle" id="finalDate"></p>
+        <div class="emoji-big">🌹</div>
+        <!-- Письмо для тебя -->
+        <div class="letter-block">
+            <h3 class="letter-title">💌 Напиши мне письмо</h3>
+            <p class="letter-subtitle">Что ты хочешь мне сказать?</p>
+            <textarea
+                    id="letterInput"
+                    class="letter-input"
+                    placeholder="Напиши здесь свои мысли... 💕"
+                    maxlength="500"
+                    rows="5"
+            ></textarea>
+            <div class="letter-counter">
+                <span id="letterCount">0</span> / 500
+            </div>
+            <button class="btn-final" id="btnSendLetter">Отправить письмо 💘</button>
+            <p class="letter-status" id="letterStatus"></p>
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно для просмотра фото -->
+<div class="modal" id="modal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <img class="modal-img" id="modalImg" src="" alt="">
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
