@@ -155,6 +155,7 @@ function showScreen(id) {
 // ---------- Убегающая кнопка НЕТ ----------
 const btnNo = document.getElementById('btnNo');
 const btnYes = document.getElementById('btnYes');
+const buttonsWrap = document.getElementById('buttonsWrap');
 
 let noCount = 0;
 const noTexts = [
@@ -172,28 +173,52 @@ const noTexts = [
 ];
 
 function moveNoButton() {
-    if (!btnNo) return;
+    if (!btnNo || !buttonsWrap) return;
+
+    btnNo.classList.add('runaway');
+
+    const wrapRect = buttonsWrap.getBoundingClientRect();
     const btnWidth = btnNo.offsetWidth || 100;
-    const btnHeight = btnNo.offsetHeight || 55;
-    const padding = 15;
-    const maxX = window.innerWidth - btnWidth - padding;
-    const maxY = window.innerHeight - btnHeight - padding;
+    const btnHeight = btnNo.offsetHeight || 50;
 
-    const x = padding + Math.random() * Math.max(maxX - padding, 10);
-    const y = padding + Math.random() * Math.max(maxY - padding, 10);
+    // Максимально возможные координаты внутри .buttons
+    const maxLeft = Math.max(wrapRect.width - btnWidth, 0);
+    const maxTop = Math.max(wrapRect.height - btnHeight, 0);
 
-    btnNo.style.position = 'fixed';
-    btnNo.style.left = x + 'px';
-    btnNo.style.top = y + 'px';
-    btnNo.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+    // Позиция "Да" внутри контейнера
+    const yesRect = btnYes.getBoundingClientRect();
+    const yesCenterX = yesRect.left - wrapRect.left + yesRect.width / 2;
+    const yesCenterY = yesRect.top - wrapRect.top + yesRect.height / 2;
 
+    // Пытаемся найти позицию не поверх "Да"
+    let left, top, tries = 0;
+    do {
+        left = Math.random() * maxLeft;
+        top = Math.random() * maxTop;
+        tries++;
+
+        const noCenterX = left + btnWidth / 2;
+        const noCenterY = top + btnHeight / 2;
+
+        // Проверка: не пересекается ли с "Да"
+        const dx = Math.abs(noCenterX - yesCenterX);
+        const dy = Math.abs(noCenterY - yesCenterY);
+        const minDistX = (btnWidth + yesRect.width) / 2 + 5;
+        const minDistY = (btnHeight + yesRect.height) / 2 + 5;
+
+        if (dx > minDistX || dy > minDistY) {
+            // Нет пересечения — выходим
+            break;
+        }
+    } while (tries < 30);
+
+    btnNo.style.left = left + 'px';
+    btnNo.style.top = top + 'px';
+    btnNo.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
+
+    // Меняем текст
     noCount++;
     btnNo.textContent = noTexts[Math.min(noCount, noTexts.length - 1)];
-
-    if (btnYes) {
-        const grow = Math.min(1 + noCount * 0.08, 1.6);
-        btnYes.style.transform = `scale(${grow})`;
-    }
 }
 
 if (btnNo) {
